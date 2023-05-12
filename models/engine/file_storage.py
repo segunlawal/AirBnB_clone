@@ -6,8 +6,8 @@ class FileStorage:
     """This class serializes instances to a JSON file
     and deserializes JSON file to instances"""
 
-    self.__file_path = "file.json"
-    self.__objects = {}
+    __file_path = "file.json"
+    __objects = {}
 
     def all(self):
         """Returns the dictionary __objects"""
