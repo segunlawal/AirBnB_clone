@@ -25,7 +25,6 @@ class FileStorage:
             dict_storage = {k: v.to_dict() for k, v in self.__objects.items()}
             json.dump(dict_storage, objf)
 
-
     def reload(self):
         """deserializes the JSON file to __objects"""
         try:
