@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """This module contains the FileStorage class"""
+import json
 
 
 class FileStorage:
