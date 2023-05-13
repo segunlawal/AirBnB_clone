@@ -8,7 +8,7 @@ from models.base_model import BaseModel
 class HBNBCommand(cmd.Cmd):
     """entry point of the command interpreter"""
     prompt = '(hbnb)'
-    __classes = ('BaseModel')
+    __classes = ('BaseModel', 'User')
 
     def do_quit(self, arg):
         """Exit the program"""
@@ -38,6 +38,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             if arg == "BaseModel":
                 new_instance = BaseModel()
+                new_instance.save()
+                print("{}".format(new_instance.id))
+            elif arg == "User":
+                new_instance = User()
                 new_instance.save()
                 print("{}".format(new_instance.id))
 
