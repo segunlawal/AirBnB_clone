@@ -30,7 +30,11 @@ class FileStorage:
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            for value in data.values():
-                self.new(eval(value['__class__'])(**value))
+                the_classes = {'BaseModel': "base_model", 'User': "user"}
+                for value in data.values():
+                    cls_name = value['__class__']
+                    mod = import_module(f'models.{the_classes[cls_name]}')
+                    Class = getattr(mod, cls_name)
+                    self.new(Class(**value))
         except FileNotFoundError:
             pass
