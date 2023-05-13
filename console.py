@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 """This module contains the HBNBCommand"""
 import cmd
+from models import storage
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     """entry point of the command interpreter"""
     prompt = '(hbnb)'
+    __classes = ('BaseModel')
 
     def do_quit(self, arg):
         """Exit the program"""
@@ -27,20 +30,22 @@ class HBNBCommand(cmd.Cmd):
         """Usage: create <class>
         Create a new class instance and print its id.
         """
-        argl = parse(arg)
+        argl = arg.split()
         if len(argl) == 0:
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            print(eval(argl[0])().id)
-            storage.save()
+            if arg == "BaseModel":
+                new_instance = BaseModel()
+                new_instance.save()
+                print("{}".format(new_instance.id))
 
     def do_show(self, arg):
         """Usage: show <class> <id> or <class>.show(<id>)
         Display the string representation of a class instance of a given id.
         """
-        argl = parse(arg)
+        argl = arg.split()
         objdict = storage.all()
         if len(argl) == 0:
             print("** class name missing **")
@@ -53,10 +58,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(objdict["{}.{}".format(argl[0], argl[1])])
 
-     def do_destroy(self, arg):
+    def do_destroy(self, arg):
         """Usage: destroy <class> <id> or <class>.destroy(<id>)
         Delete a class instance of a given id."""
-        argl = parse(arg)
+        argl = arg.split()
         objdict = storage.all()
         if len(argl) == 0:
             print("** class name missing **")
@@ -74,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
         """Usage: all or all <class> or <class>.all()
         Display string representations of all instances of a given class.
         If no class is specified, displays all instantiated objects."""
-        argl = parse(arg)
+        argl = arg.split()
         if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
@@ -86,14 +91,13 @@ class HBNBCommand(cmd.Cmd):
                     objl.append(obj.__str__())
             print(objl)
 
-
     def do_update(self, arg):
         """Usage: update <class> <id> <attribute_name> <attribute_value> or
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
        <class>.update(<id>, <dictionary>)
         Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
-        argl = parse(arg)
+        argl = arg.split()
         objdict = storage.all()
 
         if len(argl) == 0:
