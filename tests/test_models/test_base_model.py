@@ -27,6 +27,20 @@ class TestBaseModel(unittest.TestCase):
         """test if updated_at is a datetime object"""
         base_model = BaseModel()
         self.assertIsInstance(base_model.updated_at, datetime)
+
+    def test_to_dict(self):
+        """test to_dict()."""
+
+        c = BaseModel()
+        c.name = "Steve"
+        c.age = 26
+        d = c.to_dict()
+        self.assertEqual(d["id"], c.id)
+        self.assertEqual(d["__class__"], type(c).__name__)
+        self.assertEqual(d["created_at"], c.created_at.isoformat())
+        self.assertEqual(d["updated_at"], c.updated_at.isoformat())
+        self.assertEqual(d["name"], c.name)
+        self.assertEqual(d["age"], c.age)
  
 if __name__ == '__main__':
     unittest.main()
