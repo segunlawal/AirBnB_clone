@@ -32,10 +32,15 @@ class FileStorage:
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                the_classes = {'BaseModel': "base_model", 'User': "user",
-                                'State': "state", 'City': "city",
-                                'Amenity': "amenity", 'Place': "place",
-                                'Review': "review"}
+                the_classes = {
+                        'BaseModel': "base_model",
+                        'User': "user",
+                        'State': "state",
+                        'City': "city",
+                        'Amenity': "amenity",
+                        'Place': "place",
+                        'Review': "review"
+                }
                 for value in data.values():
                     cls_name = value['__class__']
                     mod = import_module(f'models.{the_classes[cls_name]}')
@@ -43,7 +48,6 @@ class FileStorage:
                     self.new(Class(**value))
         except FileNotFoundError:
             pass
-
 
     def classes(self):
         """Returns a dictionary of valid classes and their references."""
@@ -63,7 +67,6 @@ class FileStorage:
                    "Place": Place,
                    "Review": Review}
         return classes
-
 
     def attributes(self):
         """Returns the valid attributes and their types for classname."""

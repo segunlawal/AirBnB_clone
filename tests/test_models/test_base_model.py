@@ -41,6 +41,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d["updated_at"], c.updated_at.isoformat())
         self.assertEqual(d["name"], c.name)
         self.assertEqual(d["age"], c.age)
- 
+
+
 if __name__ == '__main__':
     unittest.main()
