@@ -1,0 +1,134 @@
+.places {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.places h1 {
+  font-size: 30px;
+  width: 100%;
+}
+.places article {
+  width: 390px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ff5a5f;
+  border-radius: 4px;
+}
+.places article h2 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.places article {
+  position: relative;
+}
+.price_by_night {
+  color: #ff5a5f;
+  border: 4px solid #ff5a5f;
+  border-radius: 100%;
+  min-width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5%;
+  right: 7%;
+  font-size: 30px;
+  padding: 0.1rem;
+}
+
+.information {
+  height: 80px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2rem;
+}
+.max_guest span,
+.number_rooms span,
+.number_bathrooms span {
+  display: block;
+  padding-top: 1.2rem;
+}
+
+.max_guest,
+.number_rooms,
+.number_bathrooms {
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: center top;
+  text-align: center;
+  display: inline-block;
+  padding-top: 1.2rem;
+}
+.max_guest {
+  background-image: url(../images/icon_group.png);
+}
+.number_rooms {
+  background-image: url(../images/icon_bed.png);
+}
+.number_bathrooms {
+  background-image: url(../images/icon_bath.png);
+}
+
+.user span {
+  font-weight: bold;
+}
+.user {
+  padding: 1rem 0;
+}
+footer {
+  position: relative;
+}
+
+.reviews {
+  margin-top: 40px;
+}
+.places .amenities h2,
+.places .reviews h2 {
+  font-size: 16px;
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 0.5rem;
+}
+.amenities ul,
+.reviews ul {
+  list-style: none;
+}
+
+.amenities ul .pet {
+  background-image: url("../images/icon_pets.png");
+}
+
+.amenities ul .tv {
+  background-image: url("../images/icon_tv.png");
+}
+
+.amenities ul .wifi {
+  background-image: url("../images/icon_wifi.png");
+}
+
+.places .amenities ul,
+.places .reviews ul {
+  padding: 0;
+}
+
+.places .amenities ul li {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.places .reviews h3 {
+  font-size: 14px;
+}
+.places .reviews p {
+  font-size: 12px;
+  line-height: 1rem;
+}
